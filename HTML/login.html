@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Findress - Login</title>
+    <!-- Carrega Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <!-- Link para o novo arquivo de estilos personalizados -->
+    <link rel="stylesheet" href="../HTML/css/loguin.css">
+    
+    <!-- Configuração do Tailwind para usar cores customizadas (MANTIDA AQUI para as classes Tailwind funcionarem) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lilac-primary': '#8a2be2', // Cor principal (Lilás/Azul Violeta)
+                        'lilac-dark': '#6a0dad', // Cor para hover/destaque
+                        'lilac-light': '#d4c1ed', // Cor para bordas/background
+                        'lilac-bg': '#f5f5ff', // Background da página
+                        'text-color': '#4a4a4a',
+                    },
+                    fontFamily: {
+                        // A fonte agora é importada via custom.css, mas a definição de qual fonte usar é mantida no config
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- O link para a fonte Poppins foi removido, pois agora está no custom.css -->
+</head>
+<body class="bg-lilac-bg font-sans text-text-color min-h-screen">
+    
+    <!-- HEADER -->
+    <header class="main-header p-4 lg:px-10 flex flex-col sm:flex-row justify-between items-center border-b border-gray-200 bg-white shadow-sm sticky top-0 z-10">
+        <a href="index.html" class="logo-link flex items-center text-current gap-1.5 mb-3 sm:mb-0">
+            <!-- Usando um placeholder para a logo, substitua pelo seu URL de imagem -->
+            <img src="../HTML/img/logo.png" alt="Findress Logo" class="h-[35px] rounded-md">
+            <span class="text-2xl font-bold text-lilac-primary">Findress</span>
+        </a>
+        
+        <!-- Barra de Busca (Oculta em telas pequenas como no seu CSS original) -->
+        <div class="hidden md:flex flex-grow max-w-lg mx-4">
+            <input type="search" placeholder="Busque por blusa, look de inverno ou inspiração..." class="w-full p-2 border border-gray-300 rounded-l-full focus:outline-none focus:ring-2 focus:ring-lilac-primary focus:border-lilac-primary">
+            <button type="submit" class="bg-lilac-primary text-white p-2 w-12 rounded-r-full hover:bg-lilac-dark transition duration-200">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <!-- Botão de Cadastro (O link deve ser para a página de cadastro) -->
+        <nav class="user-auth flex gap-3 w-full sm:w-auto justify-center">
+            <!-- Como esta é a página de Login, o link de "Entrar" não aparece. Mostramos o link para Cadastrar. -->
+            <a href="cadastro.html" class="px-4 py-2 border border-lilac-primary text-lilac-primary rounded-full font-medium hover:bg-lilac-light hover:text-lilac-dark transition duration-200 text-center flex-grow sm:flex-grow-0">
+                Cadastre-se
+            </a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT - Login Form -->
+    <main class="auth-container flex justify-center items-center py-8 px-4 h-[calc(100vh-6rem)] sm:h-[calc(100vh-5rem)]">
+        <div class="auth-box bg-white p-8 sm:p-10 rounded-xl shadow-2xl w-full max-w-md text-center">
+            <h2 class="text-3xl font-semibold text-lilac-dark mb-2">Acesse sua Conta</h2>
+            <p class="text-gray-600 mb-8">Bem-vindo(a) de volta! Organize seus looks.</p>
+
+            <form class="auth-form flex flex-col gap-5">
+                
+                <!-- E-mail -->
+                <div class="input-group text-left">
+                    <label for="email" class="block text-sm font-medium text-lilac-dark mb-1">
+                        <i class="fa-regular fa-envelope text-lilac-primary mr-2"></i> E-mail
+                    </label>
+                    <input type="email" id="email" placeholder="seu.email@exemplo.com" required 
+                           class="w-full p-3 border border-lilac-light rounded-lg text-lg focus:ring-2 focus:ring-lilac-primary focus:border-lilac-primary transition duration-200 outline-none">
+                </div>
+
+                <!-- Senha -->
+                <div class="input-group text-left">
+                    <label for="password" class="block text-sm font-medium text-lilac-dark mb-1">
+                        <i class="fa-solid fa-lock text-lilac-primary mr-2"></i> Senha
+                    </label>
+                    <input type="password" id="password" placeholder="Sua senha" required 
+                           class="w-full p-3 border border-lilac-light rounded-lg text-lg focus:ring-2 focus:ring-lilac-primary focus:border-lilac-primary transition duration-200 outline-none">
+                </div>
+                
+                <!-- Esqueceu a senha -->
+                <div class="flex justify-end text-sm mt-[-10px]">
+                    <a href="#" class="text-lilac-primary font-medium hover:underline transition duration-200">
+                        Esqueceu a Senha?
+                    </a>
+                </div>
+
+                <!-- Botão de Ação -->
+                <button type="submit" class="cta-button bg-lilac-primary text-white p-3.5 border-none rounded-full font-bold cursor-pointer hover:bg-lilac-dark transition duration-200 uppercase tracking-wider shadow-md hover:shadow-lg">
+                    Entrar
+                </button>
+                
+                <!-- Switch para Cadastro -->
+                <p class="switch-auth text-sm mt-4">
+                    Ainda não tem conta? 
+                    <a href="cadastro.html" class="text-lilac-primary font-bold hover:text-lilac-dark hover:underline transition duration-200">
+                        Cadastre-se
+                    </a>
+                </p>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
