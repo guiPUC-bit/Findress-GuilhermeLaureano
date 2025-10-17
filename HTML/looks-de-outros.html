@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar Looks | Findress</title>
+    <link rel="stylesheet" href="../HTML/css/looks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="main-header">
+        <a href="index.html" class="logo-link">
+            <img src="../HTML/img/logo.png" alt="Logo do site, uma lupa com uma saia dentro">
+            <h1 class="logo">Findress</h1>
+        </a>
+        <div class="search-bar-header">
+            <input type="search" placeholder="Busque por look casual, festa, ou nome de usuário...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <nav class="user-auth">
+            <a href="login.html" class="btn-auth btn-secondary">Entrar</a>
+            <a href="cadastro.html" class="btn-auth btn-primary">Cadastre-se</a>
+        </nav>
+    </header>
+
+    <main class="looks-page">
+        <section class="looks-header">
+            <h2>Inspiração de Looks da Comunidade ✨</h2>
+            <p>Descubra combinações criadas por outros usuários. Salve seus favoritos e adapte para o seu guarda-roupa!</p>
+        </section>
+
+        <div class="looks-container">
+            <div class="look-filter-bar">
+                <button class="active">Todos</button>
+                <button>Casual</button>
+                <button>Festa</button>
+                <button>Trabalho</button>
+                <button>Inverno</button>
+                <button>Verão</button>
+            </div>
+
+            <section class="looks-grid">
+                
+                <article class="look-card">
+                    <div class="look-image">
+                        <img src="../HTML/img/look-inverno.jpg" alt="Look de inverno com suéter oversized e botas" height="600" >
+                    </div>
+                    <div class="look-info">
+                        <h4>Look de Inverno Confortável</h4>
+                        <p>Ótimo para um dia frio e casual. Combinando suéter oversized e botas de cano alto.</p>
+                        <div class="user-meta">
+                            <span>Por: @AnaFashion</span>
+                            <div class="actions-bar">
+                                <a href="#" title="Salvar Look"><i class="far fa-heart"></i> 142</a>
+                                <a href="#" title="Comentar"><i class="far fa-comment"></i> 25</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="look-card">
+                    <div class="look-image">
+                        <img src="../HTML/img/look-trabalho.jpg" alt="Look de trabalho com um conjunto de alfaiataria marrom" height="800" >
+                    </div>
+                    <div class="look-info">
+                        <h4>Conjunto para Reunião Importante</h4>
+                        <p>Estilo executivo moderno. Calça de alfaiataria e blazer claro.</p>
+                        <div class="user-meta">
+                            <span>Por: @EstiloProfissional</span>
+                            <div class="actions-bar">
+                                <a href="#"><i class="far fa-heart"></i> 98</a>
+                                <a href="#"><i class="far fa-comment"></i> 10</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="look-card">
+                    <div class="look-image">
+                        <img src="../HTML/img/look-floral.jpg" alt="vestido com flores azuis" height="700" >
+                    </div>
+                    <div class="look-info">
+                        <h4>Vestido Floral de Verão</h4>
+                        <p>Leve e fresco para passeios. Adicionei sandálias rasteiras e óculos de sol.</p>
+                        <div class="user-meta">
+                            <span>Por: @DudaVerão</span>
+                            <div class="actions-bar">
+                                <a href="#"><i class="far fa-heart"></i> 210</a>
+                                <a href="#"><i class="far fa-comment"></i> 45</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="look-card">
+                    <div class="look-image">
+                        <img src="../HTML/img/look-casual.jpg" alt="look casual com saia preta e blusa de manga longa branca" height="650" >
+                    </div>
+                    <div class="look-info">
+                        <h4>Noite com os Amigos</h4>
+                        <p>Jeans, camiseta básica e jaqueta de couro para um visual descontraído.</p>
+                        <div class="user-meta">
+                            <span>Por: @GuiCool</span>
+                            <div class="actions-bar">
+                                <a href="#"><i class="far fa-heart"></i> 65</a>
+                                <a href="#"><i class="far fa-comment"></i> 5</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section sec-sobre">
+                <h3>Sobre a Findress</h3>
+                <p>Uma plataforma para te ajudar a organizar seu guarda-roupa e encontrar o look perfeito.</p>
+            </div>
+            <div class="footer-section sec-social">
+                <h3>Siga-nos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section sec-contato">
+                <h3>Contato</h3>
+                <p><i class="fas fa-envelope"></i> contato@findress.com</p>
+                <p><i class="fas fa-phone"></i> (21) xxx-xxx</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Findress. Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+</html>

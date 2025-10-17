@@ -1,0 +1,16 @@
+/* Importação da fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis de Cores (Definidas como variáveis CSS nativas) */
+:root {
+    --lilac-primary: #8a2be2;
+    --lilac-dark: #6a0dad;
+    --lilac-light: #d4c1ed;
+    --lilac-bg: #f5f5ff;
+    --text-color: #4a4a4a;
+}
+
+/* Opcional: Configuração global da fonte */
+body {
+    font-family: 'Poppins', sans-serif;
+}

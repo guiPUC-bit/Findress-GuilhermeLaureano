@@ -1,0 +1,405 @@
+/*
+ * Arquivo: style.css
+ * Tema: Findress - Estilos Globais e Específicos para a página de Looks (Explorar)
+ */
+
+/* --- 1. Definição de Variáveis CSS (Custom Properties) --- */
+:root {
+    /* Cores Principais */
+    --cor-primaria:  #8a2be2; /* Azul vibrante (para CTAs e destaques) */
+    --cor-secundaria: #6a0dad;; /* Cinza (para textos secundários e botões) */
+    
+    /* Cores de Fundo e Texto */
+    --cor-fundo-claro: #f8f9fa; /* Fundo geral do corpo */
+    --cor-fundo-card: #ffffff; /* Fundo dos cards/elementos */
+    --cor-texto-principal: #8a2be2; /* Preto quase absoluto */
+    --cor-texto-secundario: #6c757d; /* Cinza para parágrafos */
+    
+    /* Outros */
+    --cor-sombra: rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+    --cor-borda: #d4c1ed;
+}
+
+/* --- 2. Estilos Globais (Ajustar se já existirem) --- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-primaria);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+}
+
+/* --- 3. Estilos do Header e Footer (Mantenha ou integre com os seus) --- */
+
+.main-header {
+    /* Estilos do seu header original (exemplo) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--cor-fundo-card);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    color: var(--cor-texto-principal);
+}
+
+.logo-link img {
+    height: 40px; /* Ajuste conforme sua imagem */
+    margin-right: 10px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+/* Estilos da barra de busca no header */
+.search-bar-header {
+    display: flex;
+    border: 1px solid var(--cor-borda);
+    border-radius: 25px;
+    overflow: hidden;
+    max-width: 400px;
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search-bar-header input {
+    border: none;
+    padding: 10px 20px;
+    flex-grow: 1;
+    font-size: 1em;
+    outline: none;
+}
+
+.search-bar-header button {
+    background-color: var(--cor-fundo-card);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    transition: color 0.2s;
+}
+
+.search-bar-header button:hover {
+    color: var(--cor-primaria);
+}
+
+/* Estilos dos botões de autenticação */
+.btn-auth {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #6a0dad; /* Tom mais escuro do primário */
+}
+
+.btn-secondary {
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+}
+
+.btn-secondary:hover {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+
+/* --- 4. Estilos Específicos da Página de Exploração de Looks (.looks-page) --- */
+
+/* Seção de Cabeçalho da Página */
+.looks-header {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--cor-fundo-card);
+    border-bottom: 2px solid var(--cor-fundo-claro);
+}
+
+.looks-header h2 {
+    font-size: 2.8em;
+    color: var(--cor-texto-principal);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.looks-header p {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Container principal e Grade */
+.looks-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.looks-grid {
+    display: grid;
+    /* Configuração responsiva: Colunas de no mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+}
+
+/* Estilos do Card de Look Individual */
+.look-card {
+    background-color: var(--cor-fundo-card);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--cor-sombra);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.look-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.look-info {
+    padding: 15px;
+}
+
+.look-info h4 {
+    font-size: 1.25em;
+    margin-bottom: 5px;
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+}
+
+.look-info p {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Meta Dados do Usuário e Ações (Curtir/Comentar) */
+.user-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.user-meta span {
+    font-weight: 500;
+    color: var(--cor-primaria);
+    font-size: 0.85em;
+}
+
+.actions-bar a {
+    color: var(--cor-texto-secundario);
+    margin-left: 15px;
+    transition: color 0.2s;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.actions-bar a:hover {
+    color: var(--cor-primaria);
+}
+
+/* Estilos da Barra de Filtros (Categorias) */
+.look-filter-bar {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.look-filter-bar button {
+    background-color: var(--cor-fundo-card);
+    color: var(--cor-texto-secundario);
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    font-weight: 500;
+    font-size: 0.9em;
+    white-space: nowrap;
+    outline: none;
+}
+
+.look-filter-bar button:hover {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.look-filter-bar button.active {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: var(--cor-fundo-card);
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* --- 5. Estilos do Footer (Rodapé) --- */
+
+.main-footer {
+    background-color: var(--cor-texto-principal); /* Fundo escuro para o rodapé */
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: 600;
+}
+
+.footer-section p {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+}
+
+.sec-contato i, .sec-contato p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5em;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--cor-primaria);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- 6. Media Queries (Responsividade) --- */
+
+@media (max-width: 992px) {
+    .main-header {
+        flex-wrap: wrap;
+        padding: 15px 20px;
+    }
+
+    .search-bar-header {
+        order: 3; /* Move a busca para a próxima linha em telas médias */
+        width: 100%;
+        margin: 15px 0 0 0;
+        max-width: 100%;
+    }
+
+    .user-auth {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .footer-content {
+        gap: 30px;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .looks-header h2 {
+        font-size: 2em;
+    }
+    .looks-grid {
+        /* Exibe apenas uma coluna em telas pequenas */
+        grid-template-columns: 1fr; 
+    }
+    .look-image {
+        height: 300px;
+    }
+    .look-filter-bar {
+        /* Permite rolar os filtros lateralmente em telas pequenas */
+        justify-content: flex-start; 
+        overflow-x: auto; 
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    /* Estilos do Card de Look Individual */
+.look-card {
+    /* ... (outras regras mantidas) ... */
+    overflow: hidden; /* Garante que a imagem cortada não vaze */
+}
+
+.look-image {
+    height: 350px; /* Altura fixa para todos os cards */
+    /* Removemos o fundo e os estilos de centralização do ícone */
+    background: none; /* remove o degradê */
+    display: block; /* Garante que a div se comporte bem */
+    padding: 0;
+}
+
+/* **ADICIONE ESTE NOVO BLOCO:** Estilos para a imagem dentro do container */
+.look-image img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover é a chave: 
+       Ele redimensiona a imagem para cobrir toda a área da div, cortando 
+       as bordas se necessário para evitar distorção.
+    */
+    object-fit: cover; 
+    display: block;
+}
+
+/* Remova ou comente o bloco original que estiliza o ícone de câmera (se você o tinha no CSS) */
+/*
+.look-image .fa-camera {
+    display: none; // Não será mais necessário
+}
+*/
+}
