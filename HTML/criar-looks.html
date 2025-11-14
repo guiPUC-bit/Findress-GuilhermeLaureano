@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montar Look - Findress</title>
+    <link rel="stylesheet" href="../HTML/css/cria-looks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+             <a href="index.html" class="logo-link">
+            <img src="../HTML/img/logo.png" alt="Logo do site, uma lupa com uma saia dentro">
+            <h1 class="logo">Findress</h1>
+        </a>
+            <nav class="nav-links">
+                <a href="#">Meu Guarda-Roupa</a>
+                <a href="#">Meus Looks</a>
+                <a href="#">Configurações</a>
+                <a href="#">Sair</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1 class="page-title">Começar a Montar Meu Look</h1>
+            <p class="page-subtitle">Arraste as peças para as áreas do corpo correspondentes</p>
+
+            <div class="content-wrapper">
+                <div class="look-area">
+                    <h2>Visualização do Look</h2>
+                    <div class="look-container">
+                        <div class="body-part torso" data-part="torso">
+                            <div class="body-part-label">TORSO</div>
+                            <div class="body-part-placeholder" id="torsoPlaceholder">
+                                <i class="fas fa-tshirt"></i>
+                                <p>Arraste peças para o torso aqui</p>
+                            </div>
+                            <img src="" alt="Peça do torso" class="piece-in-look" id="torsoImage">
+                        </div>
+                        <div class="body-part legs" data-part="legs">
+                            <div class="body-part-label">PERNAS</div>
+                            <div class="body-part-placeholder" id="legsPlaceholder">
+                                <i class="fas fa-vest"></i>
+                                <p>Arraste peças para as pernas aqui</p>
+                            </div>
+                            <img src="" alt="Peça das pernas" class="piece-in-look" id="legsImage">
+                        </div>
+                        <div class="body-part feet" data-part="feet">
+                            <div class="body-part-label">PÉS</div>
+                            <div class="body-part-placeholder" id="feetPlaceholder">
+                                <i class="fas fa-shoe-prints"></i>
+                                <p>Arraste calçados aqui</p>
+                            </div>
+                            <img src="" alt="Calçados" class="piece-in-look" id="feetImage">
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary">Salvar Rascunho</button>
+                        <button class="btn btn-primary">Finalizar Look</button>
+                    </div>
+                </div>
+
+                <div class="pieces-area">
+                    <h2>Suas peças cadastradas</h2>
+                    <div class="pieces-grid" id="piecesGrid">
+                        <!-- Peças serão adicionadas dinamicamente via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button class="add-piece-btn" id="addPieceBtn">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Modal para adicionar nova peça -->
+    <div class="modal" id="addPieceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Adicionar Nova Peça</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p class="upload-text">Arraste uma imagem ou clique para fazer upload</p>
+                <button class="upload-btn">Selecionar Arquivo</button>
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            </div>
+            <form id="pieceForm">
+                <div class="form-group">
+                    <label for="pieceName">Nome da Peça</label>
+                    <input type="text" id="pieceName" placeholder="Ex: Camiseta básica branca" required>
+                </div>
+                <div class="form-group">
+                    <label for="pieceCategory">Categoria</label>
+                    <select id="pieceCategory" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="torso">Torso (camisetas, blusas, casacos)</option>
+                        <option value="legs">Pernas (calças, shorts, saias)</option>
+                        <option value="feet">Pés (tênis, sapatos, sandálias)</option>
+                    </select>
+                </div>
+                <button type="submit" class="save-piece-btn">Adicionar Peça</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Elementos DOM
+        const addPieceBtn = document.getElementById('addPieceBtn');
+        const addPieceModal = document.getElementById('addPieceModal');
+        const closeModal = document.getElementById('closeModal');
+        const uploadArea = document.getElementById('uploadArea');
+        const imageUpload = document.getElementById('imageUpload');
+        const pieceForm = document.getElementById('pieceForm');
+        const piecesGrid = document.getElementById('piecesGrid');
+        const bodyParts = document.querySelectorAll('.body-part');
+
+        // Dados de exemplo para peças - CORRIGIDO
+        let pieces = [
+            { id: 1, name: "Camiseta Básica", category: "torso", image: "../HTML/img/cria-looks/camiseta-basica.png" },
+            { id: 2, name: "Blusa de Manga Longa", category: "torso", image: "../HTML/img/cria-looks/blusa-manga-longa.png" },
+            { id: 3, name: "Jaqueta Jeans", category: "torso", image: "../HTML/img/cria-looks/jaqueta-jeans.png" },
+            { id: 4, name: "Calça Jeans", category: "legs", image: "../HTML/img/cria-looks/calca-jeans.webp" },
+            { id: 5, name: "Shorts", category: "legs", image: "../HTML/img/cria-looks/shorts.png" },
+            { id: 6, name: "Saia Midi", category: "legs", image: "../HTML/img/cria-looks/saia-midi.png" },
+            { id: 7, name: "Tênis Branco", category: "feet", image: "../HTML/img/cria-looks/tenis-branco.png" },
+            { id: 8, name: "Sandália", category: "feet", image: "../HTML/img/cria-looks/sandalia.png" },
+            { id: 9, name: "Bota", category: "feet", image: "../HTML/img/cria-looks/bota.png" }
+        ];
+
+        // Função para renderizar as peças
+        function renderPieces() {
+            piecesGrid.innerHTML = '';
+            pieces.forEach(piece => {
+                const pieceCard = document.createElement('div');
+                pieceCard.className = 'piece-card';
+                pieceCard.draggable = true;
+                pieceCard.dataset.id = piece.id;
+                pieceCard.dataset.category = piece.category;
+                
+                pieceCard.innerHTML = `
+                    <img src="${piece.image}" alt="${piece.name}" class="piece-image">
+                    <div class="piece-info">
+                        <div class="piece-name">${piece.name}</div>
+                        <div class="piece-category">${piece.category === 'torso' ? 'Torso' : piece.category === 'legs' ? 'Pernas' : 'Pés'}</div>
+                    </div>
+                `;
+                
+                // Adicionar eventos de drag
+                pieceCard.addEventListener('dragstart', handleDragStart);
+                
+                piecesGrid.appendChild(pieceCard);
+            });
+        }
+
+        // Funções para drag and drop
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.closest('.piece-card').dataset.id);
+            e.target.closest('.piece-card').classList.add('dragging');
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('highlight');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('highlight');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('highlight');
+            
+            const pieceId = e.dataTransfer.getData('text/plain');
+            const piece = pieces.find(p => p.id == pieceId);
+            const bodyPart = e.currentTarget.dataset.part;
+            
+            // Verificar se a peça é adequada para esta parte do corpo
+            if (piece.category !== bodyPart) {
+                alert(`Esta peça é para ${piece.category === 'torso' ? 'o torso' : piece.category === 'legs' ? 'as pernas' : 'os pés'}, não para ${bodyPart === 'torso' ? 'o torso' : bodyPart === 'legs' ? 'as pernas' : 'os pés'}.`);
+                return;
+            }
+            
+            // Adicionar a imagem à parte do corpo
+            const placeholder = document.getElementById(`${bodyPart}Placeholder`);
+            const image = document.getElementById(`${bodyPart}Image`);
+            
+            placeholder.style.display = 'none';
+            image.src = piece.image;
+            image.style.display = 'block';
+            
+            // Remover a classe dragging de todos os elementos
+            document.querySelectorAll('.dragging').forEach(el => {
+                el.classList.remove('dragging');
+            });
+        }
+
+        // Adicionar eventos de drag and drop às partes do corpo
+        bodyParts.forEach(part => {
+            part.addEventListener('dragover', handleDragOver);
+            part.addEventListener('dragleave', handleDragLeave);
+            part.addEventListener('drop', handleDrop);
+        });
+
+        // Abrir modal
+        addPieceBtn.addEventListener('click', () => {
+            addPieceModal.style.display = 'flex';
+        });
+
+        // Fechar modal
+        closeModal.addEventListener('click', () => {
+            addPieceModal.style.display = 'none';
+        });
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', (e) => {
+            if (e.target === addPieceModal) {
+                addPieceModal.style.display = 'none';
+            }
+        });
+
+        // Upload de imagem
+        uploadArea.addEventListener('click', () => {
+            imageUpload.click();
+        });
+
+        imageUpload.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                uploadArea.querySelector('.upload-text').textContent = `Arquivo selecionado: ${fileName}`;
+                
+                // Preview da imagem selecionada
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Aqui você pode mostrar um preview se quiser
+                    console.log('Imagem carregada:', event.target.result);
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Adicionar nova peça
+        pieceForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const pieceName = document.getElementById('pieceName').value;
+            const pieceCategory = document.getElementById('pieceCategory').value;
+            
+            if (imageUpload.files.length === 0) {
+                alert('Por favor, selecione uma imagem para a peça.');
+                return;
+            }
+            
+            // Em um cenário real, aqui faríamos upload da imagem para o servidor
+            // Por enquanto, vamos usar uma URL local temporária
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const newPiece = {
+                    id: pieces.length + 1,
+                    name: pieceName,
+                    category: pieceCategory,
+                    image: event.target.result
+                };
+                
+                pieces.push(newPiece);
+                renderPieces();
+                
+                // Limpar formulário e fechar modal
+                pieceForm.reset();
+                imageUpload.value = '';
+                uploadArea.querySelector('.upload-text').textContent = 'Arraste uma imagem ou clique para fazer upload';
+                addPieceModal.style.display = 'none';
+                
+                alert('Peça adicionada com sucesso!');
+            };
+            reader.readAsDataURL(imageUpload.files[0]);
+        });
+
+        // Inicializar a página
+        renderPieces();
+    </script>
+</body>
+</html>

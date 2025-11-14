@@ -38,11 +38,7 @@ body {
 
 .logo-link img { height: 35px; }
 
-.logo {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: var(--lilac-primary);
-}
+ #8a2be2
 
 .search-bar-header {
     display: flex;
